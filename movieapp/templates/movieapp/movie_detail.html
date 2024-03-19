@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+            <div class="card border-0 mt-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0 display-5 fw-normal mt-3 text-dark">
+                            <span class="vr border border-3 border-warning h-100 me-2"></span>
+                            {{ movie.title }}
+                        </h2>
+                        <a class="small text-secondary" href='{% url "movieapp:movie_list" %}'>
+                            <i class="fa-solid fa-chevron-left"></i>
+                            Back to list
+                        </a>
+                    </div>
+                    <div class="row g-2 mt-3">
+                        <div class="col-12 col-md-4">
+                            <img class="rounded img-fluid shadow" src="{{ movie.poster }}" alt="">
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <p class="fs-6 mb-0">Title</p>
+                            <p class="fs-4">{{ movie.title }}</p>
+                            <p class="fs-6 mb-0">Year</p>
+                            <p class="fs-4">{{ movie.year }}</p>
+                            <p class="fs-6 mb-0">Type</p>
+                            <p class="fs-4">{{ movie.type }}</p>
+                            <p class="fs-6 mb-0">
+                                Discover more from
+                                <a href="https://www.imdb.com/title/{{ movie.imdbid }}">
+                                    <img class="ms-auto"
+                                         src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
+                                         alt="imdb"
+                                         height="20px">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

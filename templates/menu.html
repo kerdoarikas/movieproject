@@ -1,0 +1,56 @@
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container">
+        <a class="navbar-brand bg-warning rounded shadow p-2 fw-bold fs-6 text-dark" href="#">MCDb</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="ms-auto d-flex justify-content-center">
+                <form action='{% url "movieapp:search_result" %}' method="get" id="searchForm">
+                    <div class="input-group">
+                        <select class="form-select form-select-sm" name="choose_table">
+                            <option selected>Choose table</option>
+                            <option value="country_valik">Country table</option>
+                            <option value="movie_valik">Movie table</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm" name="search_phrase" placeholder="Search phrase...">
+                        <button class="btn btn-sm btn-secondary" type="button" onclick="submitSearch()">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <ul class="navbar-nav mb-2 mb-lg-0 mt-3 mt-md-0 ms-auto">
+
+
+                <li class="nav-item">
+                    <a class="btn btn-dark fw-semibold" href='{% url "movieapp:index"%}'>
+                        <i class="fa-solid fa-home me-1"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-dark fw-semibold" id="navbarDropdown" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-list me-1"></i>Lists</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href='{% url "movieapp:country_list" %}'>Countries</a></li>
+                        {# dropdown sisu #}
+                        <li><a class="dropdown-item" href='{% url "movieapp:movie_list" %}'>Movies</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-dark fw-semibold" href="/admin">
+                        <i class="fa-solid fa-right-to-bracket me-1"></i>
+                        Sign In
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    function submitSearch(){
+        $('#searchForm').submit();
+    }
+</script>

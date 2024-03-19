@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+            <div class="w-100 bg-white shadow p-3 mt-3">
+                <h2 class="mb-0 display-5 fw-normal mt-3 text-dark">
+                    <span class="vr border border-3 border-warning h-100 me-2"></span>
+                    List of Movies
+                </h2>
+                {% if is_paginated %}
+                <nav class="pagination mt-5">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                        </li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+                <ul class="list-group mt-2">
+                    {% for movie in movies %}
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <img src="{{ movie.poster }}" alt="{{ movie.title }}" height="100px">
+                            <div class="d-block ms-3 w-100">
+                                <div class="d-flex justify-content-between w-100">
+                                    <a class="text-dark fw-bold mb-1 w-100 text-decoration-none"
+                                       href='{% url "movieapp:movie_detail" pk=movie.id %}'>{{ movie.title }}</a>
+                                    <a href="https://www.imdb.com/title/{{ movie.imdbid }}">
+                                        <img class="ms-auto"
+                                             src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
+                                             alt="imdb"
+                                             height="20px">
+                                    </a>
+                                </div>
+                                <p class="small text-secondary">{{ movie.year }}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

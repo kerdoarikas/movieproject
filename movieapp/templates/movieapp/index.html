@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-light display-3 fw-normal text-center w-100">
+        Movies & Countries Database
+    </h1>
+    <p class="text-light small text-center w-100">Created by: Kerdo Arikas</p>
+    <div class="row g-2 mt-5">
+        <div class="col-12 col-md-6">
+            <div class="card w-100 border-0">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <img class="rounded shadow-lg" src="https://www.filmmakersacademy.com/wp-content/uploads/2020/01/EOQ_tMzWAAIWpoV.jpg" alt="img" height="150px">
+                        <div class="d-block ms-3">
+                            <p class="fs-3 fw-semibold mb-0">Movies</p>
+                            <p class="small text-secondary">Find information about 52 movies!</p>
+                            <a class="link-warning text-decoration-none" href='{% url "movieapp:movie_list" %}'>
+                                List of all movies
+                                <i class="fa-solid fa-chevron-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card w-100 border-0">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <img class="rounded shadow-lg" src="https://www.bergerpaints.com/imaginecolours/wp-content/uploads/2016/09/flags-of-the-world-600x315.png" alt="img" height="150px">
+                        <div class="d-block ms-3">
+                            <p class="fs-3 fw-semibold mb-0">Countries</p>
+                            <p class="small text-secondary">Find information about 246 countries!</p>
+                            <a class="link-warning text-decoration-none" href='{% url "movieapp:country_list" %}'>
+                                List of all countries
+                                <i class="fa-solid fa-chevron-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
