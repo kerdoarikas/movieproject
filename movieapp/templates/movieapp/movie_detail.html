@@ -17,7 +17,18 @@
                     </div>
                     <div class="row g-2 mt-3">
                         <div class="col-12 col-md-4">
-                            <img class="rounded img-fluid shadow" src="{{ movie.poster }}" alt="">
+                            {% if movie.poster and movie.poster != "N/A"%}
+                            <a href="{{ movie.poster }}" target="_blank">
+                                <img class="rounded img-fluid shadow" src="{{ movie.poster }}" alt="">
+                            </a>
+                            {% else %}
+                            <!-- Default poster link -->
+                            <a href="https://www.reelviews.net/resources/img/default_poster.jpg" target="_blank">
+                                <img class="rounded img-fluid shadow"
+                                     src="https://www.reelviews.net/resources/img/default_poster.jpg"
+                                     alt="Default Poster">
+                            </a>
+                            {% endif %}
                         </div>
                         <div class="col-12 col-md-8">
                             <p class="fs-6 mb-0">Title</p>
@@ -28,7 +39,7 @@
                             <p class="fs-4">{{ movie.type }}</p>
                             <p class="fs-6 mb-0">
                                 Discover more from
-                                <a href="https://www.imdb.com/title/{{ movie.imdbid }}">
+                                <a href="https://www.imdb.com/title/{{ movie.imdbid }}" target="_blank">
                                     <img class="ms-auto"
                                          src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
                                          alt="imdb"

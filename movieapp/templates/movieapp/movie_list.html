@@ -41,7 +41,19 @@
                     {% for movie in movies %}
                     <li class="list-group-item">
                         <div class="d-flex">
-                            <img src="{{ movie.poster }}" alt="{{ movie.title }}" height="100px">
+                            {% if movie.poster and movie.poster != "N/A"%}
+                            <a href="{{ movie.poster }}" target="_blank">
+                                <img class="rounded img-fluid shadow" src="{{ movie.poster }}" alt="poster" width="100px">
+                            </a>
+                            {% else %}
+                            <!-- Default poster link -->
+                            <a href="https://www.reelviews.net/resources/img/default_poster.jpg" target="_blank">
+                                <img class="rounded img-fluid shadow"
+                                     src="https://www.reelviews.net/resources/img/default_poster.jpg"
+                                     alt="Default Poster"
+                                     width="100px">
+                            </a>
+                            {% endif %}
                             <div class="d-block ms-3 w-100">
                                 <div class="d-flex justify-content-between w-100">
                                     <a class="text-dark fw-bold mb-1 w-100 text-decoration-none"
